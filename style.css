@@ -332,5 +332,37 @@ footer {
   }
 }
 
+/* ハンバーガーメニュー */
+.menu-button {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* スマホだけ表示 */
+@media screen and (max-width: 768px) {
+
+  .menu-button {
+    display: block;
+  }
+
+  .main-nav {
+    display: none;
+    width: 100%;
+  }
+
+  .main-nav.open {
+    display: block;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+}
 
 11:42 2026/01/12
