@@ -10,11 +10,13 @@
 <body>
 
 <header class="site-header">
-  <div class="logo-area">
+  <div class="logo-area">  
     <h1>びちゃんホールディングス</h1>
     <p>未来を、静かに動かす。</p>
   </div>
-
+  <button class="menu-button" id="menuButton">
+    ☰
+  </button>
   <nav class="main-nav">
     <a href="index.html">ホーム</a>
     <a href="company.html">会社概要</a>
@@ -66,8 +68,20 @@
   </p>
 </footer>
 
+<script>
+  const menuButton = document.getElementById("menuButton");
+  const nav = document.querySelector(".main-nav");
+
+ menuButton.addEventListener("click", () => {
+  nav.classList.toggle("open");
+  menuButton.textContent =
+    nav.classList.contains("open") ? "×" : "☰";
+});
+</script>
+
 </body>
 </html>
+
 
 
 
