@@ -175,4 +175,114 @@ button:hover {
 
 }
 
+:root {
+  --main-color: #0a2a66;
+  --sub-color: #ffffff;
+  --gray: #f2f2f2;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  margin: 0;
+  background-color: var(--gray);
+  color: #222;
+}
+
+header {
+  background: var(--main-color);
+  color: white;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+footer {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+}
+
+.site-header {
+  background: var(--main-color);
+  color: white;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-area h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.logo-area p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 14px;
+}
+
+.site-header {
+  background-color: #0a2a66;
+  color: white;
+}
+
+.site-header a {
+  color: white;
+  text-decoration: none;
+}
+
+.site-header h1,
+.site-header p {
+  color: white;
+}
+
+.main-nav {
+  background-color: #0a2a66;
+}
+
+.main-nav a {
+  color: white;
+  font-weight: 500;
+}
+
+.main-nav a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
 11:42 2026/01/12
