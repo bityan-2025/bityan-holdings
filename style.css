@@ -599,4 +599,20 @@ body.fade nav a:hover  {
     background: #1e40af;
     /* 少し濃い青 */
 }
+
+
+
+.emergency-news {
+  background: #7a0000;
+  color: #fff;
+  padding: 14px 10vw;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.emergency-news strong {
+  margin-right: 0.5em;
+}
+
 11:42 2026/01/12
+
