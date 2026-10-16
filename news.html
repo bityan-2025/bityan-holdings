@@ -1,71 +1,122 @@
-<main class="container fade-up">
-  <section class="card news fade-up">
-    <p class="news-eyebrow">ALL UPDATES</p>
-    <h2>ニュース一覧</h2>
-    <p class="news-intro">
-      びちゃんホールディングスからのお知らせや活動情報をご紹介します。
-    </p>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ニュース一覧｜びちゃんホールディングス</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="news-page">
+
+  <header class="news-hero">
+    <div class="news-header-top">
+      <a class="news-brand" href="index.html">
+        <span class="news-brand-mark">B</span>
+        <span class="news-brand-name">
+          BITYAN
+          <small>HOLDINGS</small>
+        </span>
+      </a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mainNav"
+        aria-label="メニューを開く"
+      >☰</button>
+    </div>
+
+    <nav class="news-nav" id="mainNav">
+      <a href="index.html">トップ</a>
+      <a href="company.html">会社概要</a>
+      <a href="business.html">事業内容</a>
+      <a href="news.html" aria-current="page">ニュース</a>
+      <a href="recruit.html">採用情報</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+
+    <div class="news-hero-content fade-up">
+      <p class="news-eyebrow">LATEST INFORMATION</p>
+      <h1>News<span>.</span></h1>
+      <div class="news-title-line"></div>
+      <p class="news-hero-description">
+        びちゃんホールディングスからのお知らせや活動情報をお届けします。
+      </p>
+    </div>
+  </header>
+
+  <main class="news-main fade-up">
+    <div class="news-section-heading">
+      <h2>ニュース一覧</h2>
+      <span class="news-count">ALL UPDATES</span>
+    </div>
 
     <div id="newsList"></div>
-  </section>
-</main>
 
-<script src="news-data.js"></script>
-<script>
-  const newsList = document.getElementById("newsList");
+    <p class="news-back-link">
+      <a href="index.html">← トップページへ戻る</a>
+    </p>
+  </main>
 
-  newsList.innerHTML = newsData.map(news => `
-    <article class="news-article" id="${news.id}">
-      <p class="news-date">${news.date} · ${news.category}</p>
-      <h2 class="news-article-title">${news.title}</h2>
-      <p class="news-summary">${news.summary}</p>
+  <footer class="news-footer">
+    <a class="news-footer-brand" href="index.html">BITYAN HOLDINGS</a>
+    <p>© 2026 びちゃんホールディングス</p>
+    <p class="note">
+      ※本サイトはWeb制作練習のために作成された架空の企業サイトです。
+      掲載情報は架空のものです。
+    </p>
+  </footer>
 
-      <div class="news-body">
-        ${news.body.map(paragraph => `
-          <p>${paragraph}</p>
-        `).join("")}
-      </div>
+  <script src="news-data.js"></script>
+  <script>
+    const newsList = document.getElementById("newsList");
 
-      <a class="news-back" href="index.html">トップページへ戻る →</a>
-    </article>
-  `).join("");
-</script>
+    newsList.innerHTML = newsData.map((news, index) => `
+      <article class="news-article" id="${news.id}">
+        <p class="news-date">${news.date} · ${news.category}</p>
+        <h2 class="news-article-title">${news.title}</h2>
+        <p class="news-summary">${news.summary}</p>
 
-<footer class="news-footer">
-  <a class="news-footer-brand" href="index.html">BITYAN HOLDINGS</a>
-  <p>© 2026 びちゃんホールディングス</p>
-  <p class="note">
-    ※本サイトはWeb制作練習のために作成された架空の企業サイトです。
-    掲載情報は架空のものです。
-  </p>
-</footer>
+        <div class="news-body">
+          ${news.body.map(paragraph => `
+            <p>${paragraph}</p>
+          `).join("")}
+        </div>
+      </article>
+    `).join("");
+  </script>
 
-<script src="script.js"></script>
-<script>
-  const menuButton = document.getElementById("menuButton");
-  const mainNav = document.getElementById("mainNav");
+  <script src="script.js"></script>
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const mainNav = document.getElementById("mainNav");
 
-  if (menuButton && mainNav) {
-    menuButton.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("open");
-      menuButton.textContent = isOpen ? "×" : "☰";
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute(
-        "aria-label",
-        isOpen ? "メニューを閉じる" : "メニューを開く"
-      );
-    });
-
-    mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("open");
-        menuButton.textContent = "☰";
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "メニューを開く");
+    if (menuButton && mainNav) {
+      menuButton.addEventListener("click", () => {
+        const isOpen = mainNav.classList.toggle("open");
+        menuButton.textContent = isOpen ? "×" : "☰";
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute(
+          "aria-label",
+          isOpen ? "メニューを閉じる" : "メニューを開く"
+        );
       });
-    });
-  }
-</script>
+
+      mainNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          mainNav.classList.remove("open");
+          menuButton.textContent = "☰";
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.setAttribute("aria-label", "メニューを開く");
+        });
+      });
+    }
+  </script>
 
 </body>
 </html>
+
