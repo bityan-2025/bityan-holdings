@@ -9,24 +9,80 @@
 </head>
 <body>
 
-<header class="site-header fade-up-delay">
-  <div class="logo-area">
-    <h1>びちゃんホールディングス</h1>
-    <p>未来を、静かに動かす。</p>
+
+<header class="site-header home-hero fade-up-delay">
+
+  <div class="hero-top">
+    <a class="hero-brand" href="index.html">
+      <span class="hero-brand-mark">B</span>
+      <span class="hero-brand-name">
+        BITYAN
+        <small>HOLDINGS</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mainNav"
+      aria-label="メニューを開く"
+    >☰</button>
   </div>
-  <button class="menu-button" id="menuButton">
-    ☰
-  </button>
-  <nav class="main-nav">
-    <a href="index.html">ホーム</a>
+
+  <nav class="main-nav" id="mainNav">
+    <a href="index.html">トップ</a>
     <a href="company.html">会社概要</a>
     <a href="business.html">事業内容</a>
     <a href="news.html">ニュース</a>
+    <a href="recruit.html">採用情報</a>
     <a href="contact.html">お問い合わせ</a>
- 
   </nav>
+
+  <div class="hero-content">
+
+    <p class="hero-eyebrow">
+      BEYOND THE EXPECTED
+    </p>
+
+    <h1 class="hero-title">
+      未来を、<br>
+      <span>静かに動かす。</span>
+    </h1>
+
+    <div class="hero-title-line"></div>
+
+    <p class="hero-description">
+      Technology. Creativity. Possibility.<br>
+      異なる発想と技術を掛け合わせ、<br>
+      これまでにない価値を創造する。
+    </p>
+
+    <div class="hero-actions">
+      <a class="hero-primary" href="business.html">
+        OUR BUSINESS
+        <span>↗</span>
+      </a>
+
+      <a class="hero-secondary" href="company.html">
+        私たちについて
+        <span>→</span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hero-bottom">
+    <span>IDEAS INTO THE FUTURE</span>
+    <span class="hero-bottom-line"></span>
+    <span>EST. BITYAN HOLDINGS</span>
+  </div>
+
 </header>
-  <!-- 🔴 緊急ニュース -->
+
+
+<!-- 🔴 緊急ニュース -->
 <div class="emergency-news">
   <strong>【重要なお知らせ】</strong>
   現在、サイトに不具合が発生しており、一部のページが正しく表示されない場合があります。
@@ -34,20 +90,29 @@
 </div>
 
 <main class="container fade-up">
- <section class="card news fade-up">
-  <h2>最新ニュース</h2>
-
-  <div class="news-item">
-    <p class="news-date">2026.01.12</p>
-    <h3 class="news-title">コーポレートサイトを公開しました</h3>
-    <p class="news-text">
-      びちゃんホールディングスの公式コーポレートサイトを公開しました。
-    </p>
-  </div>
-
-  <a href="news.html" class="news-link">ニュース一覧を見る →</a>
- </section>
+  <section class="card news fade-up">
+    <p class="news-eyebrow">LATEST UPDATES</p>
+    <h2>最新ニュース</h2>
+    <div id="homeNewsList"></div>
+    <a href="news.html" class="news-link">ニュース一覧を見る →</a>
+  </section>
 </main>
+
+<script src="news-data.js"></script>
+<script>
+  const homeNewsList = document.getElementById("homeNewsList");
+
+  homeNewsList.innerHTML = newsData.slice(0, 3).map(news => `
+    <article class="home-news-item">
+      <p class="news-date">${news.date} · ${news.category}</p>
+      <h3 class="news-title">
+        <a href="news.html#${news.id}">${news.title}</a>
+      </h3>
+      <p class="news-text">${news.summary}</p>
+    </article>
+  `).join("");
+</script>
+
 
 <main>
   <section>
@@ -69,6 +134,46 @@
   </section>
 </main>
 
+
+<section class="official-instagram">
+  <p class="instagram-eyebrow">FOLLOW OUR JOURNEY</p>
+  <h2>Official Instagram</h2>
+  <p class="instagram-description">
+    びちゃんホールディングスの最新情報や活動を発信しています。
+  </p>
+
+  <div class="instagram-accounts">
+    <a
+      class="instagram-card"
+      href="https://www.instagram.com/bityan_holedings/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="instagram-icon">◎</span>
+      <span class="instagram-account-info">
+        <strong>@bityan_holedings</strong>
+        <small>Official Account</small>
+      </span>
+      <span class="instagram-arrow">↗</span>
+    </a>
+
+    <a
+      class="instagram-card"
+      href="https://www.instagram.com/bityan_holedings_t/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="instagram-icon">◎</span>
+      <span class="instagram-account-info">
+        <strong>@bityan_holedings_t</strong>
+        <small>Official Account</small>
+      </span>
+      <span class="instagram-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+
 <footer>
   <p>© 2026 びちゃんホールディングス</p>
   <p class="note">
@@ -89,4 +194,3 @@
 
 </body>
 </html>
-
