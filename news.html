@@ -1,61 +1,71 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ニュース｜びちゃんホールディングス</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header>
-  <h1>びちゃんホールディングス</h1>
-  <p>ニュース</p>
-</header>
-
-<nav>
-  <a href="index.html">トップ</a>
-  <a href="company.html">会社概要</a>
-  <a href="business.html">事業内容</a>
-  <a href="news.html">ニュース</a>
-  <a href="contact.html">お問い合わせ</a>
-</nav>
-
-<main>
-  <section class="news-item">
-    <p class="news-date">2026.01.12</p>
-    <h2>公式ウェブサイトを公開しました</h2>
-    <p>
-      びちゃんホールディングスの公式ウェブサイトを公開しました。
-      今後はこちらで最新情報をお知らせしていきます。
+<main class="container fade-up">
+  <section class="card news fade-up">
+    <p class="news-eyebrow">ALL UPDATES</p>
+    <h2>ニュース一覧</h2>
+    <p class="news-intro">
+      びちゃんホールディングスからのお知らせや活動情報をご紹介します。
     </p>
-  </section>
 
-  <section class="news-item">
-    <p class="news-date">2025.12.14</p>
-    <h2>新規プロジェクトを開始</h2>
-    <p>
-      新たな価値創造を目的とした社内プロジェクトを開始しました。
-    </p>
-  </section>
-
-  <section class="news-item">
-    <p class="news-date">2025.11.01</p>
-    <h2>びちゃんホールディングス設立</h2>
-    <p>
-      びちゃんホールディングスを設立しました。
-    </p>
+    <div id="newsList"></div>
   </section>
 </main>
 
-<footer>
+<script src="news-data.js"></script>
+<script>
+  const newsList = document.getElementById("newsList");
+
+  newsList.innerHTML = newsData.map(news => `
+    <article class="news-article" id="${news.id}">
+      <p class="news-date">${news.date} · ${news.category}</p>
+      <h2 class="news-article-title">${news.title}</h2>
+      <p class="news-summary">${news.summary}</p>
+
+      <div class="news-body">
+        ${news.body.map(paragraph => `
+          <p>${paragraph}</p>
+        `).join("")}
+      </div>
+
+      <a class="news-back" href="index.html">トップページへ戻る →</a>
+    </article>
+  `).join("");
+</script>
+
+<footer class="news-footer">
+  <a class="news-footer-brand" href="index.html">BITYAN HOLDINGS</a>
   <p>© 2026 びちゃんホールディングス</p>
   <p class="note">
     ※本サイトはWeb制作練習のために作成された架空の企業サイトです。
+    掲載情報は架空のものです。
   </p>
 </footer>
 
+<script src="script.js"></script>
+<script>
+  const menuButton = document.getElementById("menuButton");
+  const mainNav = document.getElementById("mainNav");
+
+  if (menuButton && mainNav) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuButton.textContent = isOpen ? "×" : "☰";
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "メニューを閉じる" : "メニューを開く"
+      );
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuButton.textContent = "☰";
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "メニューを開く");
+      });
+    });
+  }
+</script>
+
 </body>
 </html>
-
-
